@@ -1,0 +1,30 @@
+services:
+  appointment_db:
+    container_name: db_appointment
+    image: postgres:16.4
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    restart: always
+    ports:
+      - 5432:5432 
+    environment:
+      - POSTGRES_USER=appointment_user
+      - POSTGRES_PASSWORD=1234sql
+      - POSTGRES_DB=appointment_db
+
+  appointment_app:
+    container_name: app_appointment
+    build: .
+    volumes:
+      - .:.
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - 8000:8000
+    depends_on:
+      - appointment_db
+    environment:
+      - SECRET_KEY=${SECRET_KEY}
+    command: python manage.py runserver 0.0.0.0:8000
+
+volumes:
+  postgres:
