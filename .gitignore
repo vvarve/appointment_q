@@ -21,7 +21,9 @@ dist-ssr
 *.sln
 *.sw?
 venv
+.env
 env
+
 
 # byte-compiled / optimized / DLL files
 __pycache__
