@@ -8,7 +8,7 @@ APPS_INSTALLED = [
 ]
 
 NEW_APPS = [
-    "rest_framework",
     "corsheaders",
+    "rest_framework",
     "app",
 ]
