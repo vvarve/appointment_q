@@ -73,7 +73,7 @@ WSGI_APPLICATION = 'build.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql', # -> connecting db postgresql
-        'NAME': 'appointment_db',
+        'NAME': 'appointment_db_pg',
         'USER': 'appointment_user',
         'PASSWORD': '1234sql',
         'HOST': 'appointment_db',
@@ -84,6 +84,10 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / "db.sqlite3",
     # }
+
+    #-----------------------------------------------------
+    # if launch this with docker yoou need to run python 
+    # manage.py makemigrations "name_app" for creating migrations
 }
 
 

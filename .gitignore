@@ -20,6 +20,7 @@ dist-ssr
 *.suo
 *.sln
 *.sw?
+migrations
 venv
 .env
 env

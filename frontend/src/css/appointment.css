@@ -1,0 +1,121 @@
+.div-form-one {
+    position: absolute;
+    background-color: rgb(32, 32, 32);
+    height: 100%;
+    width: 100vw;
+    z-index: -1;
+
+}
+
+#root .div-form-two {
+    background-image: url("../assets/background-image.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    height: 100%;
+    opacity: 20%;
+}
+
+.div-form-three {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 30px;
+    height: 100vh;
+}
+
+
+form {
+    
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: white;
+
+    & input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    & select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.logo {
+    display: block;
+    margin: auto;
+    width: 200px;
+    height: 200px;
+}
+
+h1 {
+    font-family:"Ysabeau SC", serif;
+    text-align: center;
+    color: white;
+}
+
+button {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+
+    &:hover {
+        background-color: #e7e7e7;
+    }
+}
+
+label {
+    color: gray;
+}
+
+
+.div-calendar {
+    display: flex;
+    flex-direction: column;
+    background-color: #f1f1f1;
+    position: absolute;
+    row-gap: 7px;
+    inset: 0;
+    margin: auto;
+    width: 625px;
+    height: 600px;
+    border-radius: 5px;
+    padding: 20px;
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+.x-calendar {
+   position: fixed;
+   top: 0;
+   left: 0;
+   margin-left: 20px;
+   margin-top: 20px;
+   cursor: pointer;
+   color: white;
+   background-color: grey;
+   font-weight: bold;
+   border: 0;
+
+   &:hover {
+    background-color: #ccc;
+   }
+}
+
+h3 {
+    text-align: center;
+    text-transform: uppercase;
+}

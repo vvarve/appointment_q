@@ -10,5 +10,5 @@ APPS_INSTALLED = [
 NEW_APPS = [
     "corsheaders",
     "rest_framework",
-    "app",
+    "backendapp",
 ]
