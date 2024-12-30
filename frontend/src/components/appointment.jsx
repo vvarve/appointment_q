@@ -1,31 +1,23 @@
 import "../css/appointment.css";
 import logo from "../assets/logotype.svg"
-import dayjs from "dayjs";
-import {Calendar, dayjsLocalizer }from "react-big-calendar";
-import "react-big-calendar/lib/css/react-big-calendar.css";
 import { useState } from "react";
+import { getDaysOFMonth, getHours, getMonthName, gettwentyfourHours, getYear, listNumberBefore } from "../resources/returns";
+import { ViewHours } from "./ViewHours";
 
 export const AppointmentPage = () => {
 const [modal, setModal] = useState(false);
+const [viewHour, setViewHour] = useState(false);
 
-const events = [
-    {
-        start: dayjs("2024-12-23T10:00:00").toDate(),
-        end: dayjs("2024-12-23T11:00:00").toDate(),
-        title: "haircut con cesar"
-    }
-]
-
-const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = () => {
+    console.log("dayjs.month(11)")
     setModal(true);
+    
 }
 
-const localizer = dayjsLocalizer(dayjs);
+
     return (
         <>
-            <div className="div-form-one"> <div className="div-form-two"> </div></div>
-            <div className="div-form-three">
+            <div className="div-form-one">
                 <div className="div-logo">
                     <img src={logo} alt="logotype" className="logo"/>
                     <h1>Appointment Barber Shop</h1>
@@ -48,16 +40,43 @@ const localizer = dayjsLocalizer(dayjs);
                         <option value="barber1">barber1</option>
                         <option value="barber2">barber2</option>
                     </select>
-                    <button onSubmit={(e) => handleSubmit(e)} type="submit">Select Appointment</button>
+                    <button onClick={() => setModal(true) & setViewHour(false)} type="button">Select Appointment</button>
                 </form>
             </div>
 
-            
-                {!modal && <div className="div-calendar">   
-                    <button onClick={() => setModal(true)} type="button" className="x-calendar">X</button>
+
+            {modal &&<div className="div-calendar">
+                <div className="div-calendar-header">
                     <h3>Calendar</h3>
-                    <Calendar events={events} onSelectSlot={(e) => console.log(e)} localizer={localizer} messages={{next: ">", previous: "<"}} views={["month", "day"]} selectable/>
-                </div>}
+                    <span onClick={() => setModal(false) & setViewHour(false)} className="close">x</span>
+                </div>
+                <div className="div-calendar-content">
+                    <h3>{getMonthName() + " " + getYear()}</h3>
+                    {!viewHour && <div className="div-calendar-days">
+                         <table>
+                            <tbody>
+                                <tr className="tr-day">
+                                            <td></td>
+                                {
+                                    listNumberBefore(getDaysOFMonth()).map((item, index) => {
+                                        return (
+                                            
+                                            <td onClick={() => setViewHour(true)} key={index}>{item + 1}</td>
+                                        )
+                                    })
+                                }
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                    </div>}
+
+                    {viewHour && <div className="div-calendar-hours">
+                        <h3>Day </h3>
+                         <ViewHours />
+                    </div>}
+                </div>
+            </div>}
             
             
         </>
