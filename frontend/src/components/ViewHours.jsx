@@ -15,7 +15,9 @@ import { gettwentyfourHours } from "../resources/returns"
                     return (
                         <tr >
                             <td className="hour" key={hour}>{hour}:00</td>
-                            <td className="appointment">algo2</td>
+                            <td className="appointment">
+                                <span className="hour-agend">Click here to register</span>
+                            </td>
                         </tr>
                     )    
                 })}

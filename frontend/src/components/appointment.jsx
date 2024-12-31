@@ -7,6 +7,7 @@ import { ViewHours } from "./ViewHours";
 export const AppointmentPage = () => {
 const [modal, setModal] = useState(false);
 const [viewHour, setViewHour] = useState(false);
+const [daySelect, setDaySelect] = useState(0);
 
 const handleSubmit = () => {
     console.log("dayjs.month(11)")
@@ -51,7 +52,10 @@ const handleSubmit = () => {
                     <span onClick={() => setModal(false) & setViewHour(false)} className="close">x</span>
                 </div>
                 <div className="div-calendar-content">
-                    <h3>{getMonthName() + " " + getYear()}</h3>
+                    <div className="div-arrow-month">
+                        {viewHour && <span onClick={() => setViewHour(false)} className="span-arrow-back">&#11148;</span>}
+                        <h3 className="h3-month">{getMonthName() + " " + getYear()}</h3>
+                    </div>
                     {!viewHour && <div className="div-calendar-days">
                          <table>
                             <tbody>
@@ -61,7 +65,7 @@ const handleSubmit = () => {
                                     listNumberBefore(getDaysOFMonth()).map((item, index) => {
                                         return (
                                             
-                                            <td onClick={() => setViewHour(true)} key={index}>{item + 1}</td>
+                                            <td onClick={() => setViewHour(true) & setDaySelect(item + 1)} key={index}>{item + 1}</td>
                                         )
                                     })
                                 }
@@ -72,7 +76,7 @@ const handleSubmit = () => {
                     </div>}
 
                     {viewHour && <div className="div-calendar-hours">
-                        <h3>Day </h3>
+                        <h3>Day {daySelect}</h3>
                          <ViewHours />
                     </div>}
                 </div>
